@@ -14,8 +14,8 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: black; /* Set the background color to black */
-            color: #fff;
+            background-color: white; /* Set the background color to white */
+            color: #222; /* Set the text color to a darker shade */
         }
 
         .container {
@@ -116,8 +116,8 @@
 
         .side-nav ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
+            padding: 10px 0 0 0; /* Add padding to the top of the ul element */
+            margin: 50px;
         }
 
         .side-nav ul li {
@@ -133,11 +133,45 @@
         .side-nav ul li a:hover {
             color: #ffa500;
         }
+
+        /* Mobile-friendly styles */
+        @media screen and (max-width: 600px) {
+            .about-section {
+                height: 250px; /* Adjust the height for mobile screens */
+            }
+        }
+        
+        /* Style the side button */
+        .side-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .side-button .line {
+            width: 30px;
+            height: 3px;
+            background-color: #222;
+            margin-bottom: 5px;
+        }
+
+        .side-button.hide {
+            display: none; /* Hide the side button */
+        }
+
+        .side-button.open .line {
+            background-color: #fff; /* Change the color of the lines when the navigation menu is open */
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo" onclick="toggleSideNav()">TheGuys</div> <!-- Add onclick event to toggle the side nav -->
+        <div class="logo" onclick="toggleSideNav()">The<span style="font-family: 'Impact', Arial, sans-serif;">Guys</span></div>
         <div class="about-section" onclick="location.href='page1.html'">
             <img src="monkey.png" alt="Monkey" style="width: 100px; height: auto;">
             <div class="content">
@@ -162,7 +196,6 @@
         </div>
     </div>
     <div class="side-nav" id="sideNav">
-        <button onclick="toggleSideNav()">Close</button> <!-- Close button to hide the side nav -->
         <ul>
             <li><a href="#">Option 1</a></li>
             <li><a href="#">Option 2</a></li>
@@ -170,14 +203,22 @@
             <li><a href="#">Option 4</a></li>
         </ul>
     </div>
+    <button class="side-button" id="sideButton" onclick="toggleSideNav()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </button>
+
     <div style="text-align: center; margin-top: 20px; color: #777;">
-        &copy; TheGuys
+        &copy; TheGuys | <a href="https://www.instagram.com/theguys.in" target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
 
     <script>
         function toggleSideNav() {
             var sideNav = document.getElementById("sideNav");
+            var sideButton = document.getElementById("sideButton");
             sideNav.classList.toggle("show");
+            sideButton.classList.toggle("open");
         }
     </script>
 </body>
