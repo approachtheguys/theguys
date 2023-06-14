@@ -1,34 +1,184 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Dicee</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheGuys - Coming Soon</title>
+    <style>
+        @font-face {
+            font-family: 'HorrorFont';
+            src: url('horrorfont.ttf') format('truetype'); /* Replace 'horrorfont.ttf' with the actual font file */
+        }
 
-  </head>
-  <body>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: black; /* Set the background color to black */
+            color: #fff;
+        }
 
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 30px;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            font-family: 'HorrorFont', Arial, sans-serif;
+            font-size: 48px;
+            color: #ffa500;
+            cursor: pointer;
+        }
+
+        .about-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* Set the width to 100% to occupy the entire available space */
+            max-width: 600px; /* Set a maximum width to limit the size on larger screens */
+            height: 300px; /* Increase the height of the rectangles */
+            background-color: #ffa500;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .about-section:hover {
+            transform: scale(1.05);
+        }
+
+        .about-section .content {
+            display: none;
+            text-align: center;
+        }
+
+        .about-section:hover .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-section .content p {
+            margin-top: 10px;
+        }
+
+        .email-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .email-input input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        .email-input input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .side-nav {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Start with the side nav hidden */
+            height: 100vh;
+            width: 300px;
+            background-color: #222;
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+
+        .side-nav.show {
+            left: 0; /* Show the side nav */
+        }
+
+        .side-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-nav ul li {
+            padding: 10px;
+        }
+
+        .side-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .side-nav ul li a:hover {
+            color: #ffa500;
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-      <h1>Refresh Me</h1>
-
-      <div class="dice">
-        <p>Player 1</p>
-        <img class="img1" src="images/dice6.png">
-      </div>
-
-      <div class="dice">
-        <p>Player 2</p>
-        <img class="img2" src="images/dice6.png">
-      </div>
-
+        <div class="logo" onclick="toggleSideNav()">TheGuys</div> <!-- Add onclick event to toggle the side nav -->
+        <div class="about-section" onclick="location.href='page1.html'">
+            <img src="monkey.png" alt="Monkey" style="width: 100px; height: auto;">
+            <div class="content">
+                <p>Monkeys at TheGuys are responsible for creating innovative technology solutions that drive our company forward.</p>
+            </div>
+        </div>
+        <div class="about-section" onclick="location.href='page2.html'">
+            <h2>The Guys</h2>
+            <div class="content">
+                <p>We are a marketing company dedicated to delivering exceptional results for our clients.</p>
+            </div>
+        </div>
+        <div class="about-section" onclick="location.href='page3.html'">
+            <img src="bird.png" alt="Bird" style="width: 100px; height: auto;">
+            <div class="content">
+                <p>The birds at TheGuys are the creative minds behind our engaging and impactful content strategies.</p>
+            </div>
+        </div>
+        <div class="email-input">
+            <input type="email" placeholder="Enter your email">
+            <input type="submit" value="Submit">
+        </div>
+    </div>
+    <div class="side-nav" id="sideNav">
+        <button onclick="toggleSideNav()">Close</button> <!-- Close button to hide the side nav -->
+        <ul>
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+            <li><a href="#">Option 4</a></li>
+        </ul>
+    </div>
+    <div style="text-align: center; margin-top: 20px; color: #777;">
+        &copy; TheGuys
     </div>
 
-    <script src="index.js" charset="utf-8"></script>
-
-      </body>
-
-      <footer>
-        @theguys | Ayush Aggarwal | Vishal Singh
-      </footer>
-    </html>
+    <script>
+        function toggleSideNav() {
+            var sideNav = document.getElementById("sideNav");
+            sideNav.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
